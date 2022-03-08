@@ -30,6 +30,11 @@ const Signup = ({ navigation }) => {
   const handleSubmit = async () => {
     await authStore.signUp(user);
     if (authStore.user) navigation.replace("Home");
+    toast.show({
+      title: "Account verified",
+      status: "success",
+      description: "Thanks for signing up with us.",
+    });
   };
   return (
     <Center w="100%">

@@ -15,6 +15,7 @@ import COLORS from "../const/color";
 import { StyleSheet } from "react-native";
 import authStore from "../../stores/authStore";
 import { observer } from "mobx-react";
+import { useToast } from "native-base";
 
 const ForgetPassword = ({ navigation }) => {
   const [email, setEmail] = useState({
@@ -22,8 +23,6 @@ const ForgetPassword = ({ navigation }) => {
   });
   const handleSubmit = async () => {
     await authStore.forgotPassword(email);
-    alert("Reset password link has been sent, Please check your email");
-    navigation.replace("Signin");
   };
 
   return (
