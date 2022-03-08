@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
+import { Button } from "native-base";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import COLORS from "../const/color";
 
@@ -54,6 +55,23 @@ const Home = ({ navigation }) => {
             <View style={style.btn}>
               <Text style={{ fontWeight: "bold" }}>Click Here</Text>
             </View>
+            <Button
+              style={{
+                height: 60,
+              }}
+              onPress={() => navigation.navigate("Create")}
+            >
+              <Text
+                style={{
+                  fontFamily: "Optima",
+                  fontWeight: "bold",
+                  color: "white",
+                  textDecorationLine: "underline",
+                }}
+              >
+                create account
+              </Text>
+            </Button>
           </TouchableOpacity>
         </View>
       </ImageBackground>
