@@ -8,6 +8,7 @@ import {
   Input,
   VStack,
   Text,
+  useToast,
 } from "native-base";
 import React from "react";
 import { useState } from "react";
@@ -17,6 +18,7 @@ import authStore from "../../stores/authStore";
 import { observer } from "mobx-react";
 
 const Signin = ({ navigation }) => {
+  const toast = useToast();
   const [user, setUser] = useState({
     username: "",
     password: "",
