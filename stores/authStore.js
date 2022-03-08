@@ -17,6 +17,7 @@ class AuthStore {
   };
 
   signIn = async (user) => {
+    console.log(user);
     try {
       const resp = await api.post("/signin", user);
       this.setUser(resp.data.token);
