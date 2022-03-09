@@ -4,7 +4,6 @@ import api from "./api";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 // import profileStore from "./profileStore";
 import { Toast } from "native-base";
-import { useNavigation } from "@react-navigation/native";
 
 class AuthStore {
   user = null;
@@ -19,6 +18,7 @@ class AuthStore {
   };
 
   signIn = async (user) => {
+    console.log(user);
     try {
       const resp = await api.post("/signin", user);
       this.setUser(resp.data.token);
