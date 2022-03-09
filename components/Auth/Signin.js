@@ -25,7 +25,7 @@ const Signin = ({ navigation }) => {
   });
   const handleSubmit = async () => {
     await authStore.signIn(user);
-    if (authStore.user) navigation.replace("Home");
+    if (authStore.user) navigation.replace("Dashboard");
   };
 
   return (
