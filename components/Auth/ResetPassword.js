@@ -28,8 +28,8 @@ const ResetPassword = ({ navigation }) => {
   };
 
   return (
-    <Center w="100%">
-      <Box safeArea p="10" py="12" w="90%" maxW="290">
+    <Center w="100%" style={style.signWrapper}>
+      <Box safeArea p="10" py="12" w="90%" maxW="400">
         <Heading
           mt="1"
           _dark={{
@@ -37,7 +37,7 @@ const ResetPassword = ({ navigation }) => {
           }}
           color="coolGray.600"
           fontWeight="medium"
-          size="xs"
+          size="md"
         >
           Reset Your Password
         </Heading>
@@ -91,11 +91,15 @@ const style = StyleSheet.create({
   btn: {
     height: 50,
     width: 120,
-    backgroundColor: COLORS.red,
+    backgroundColor: COLORS.primary,
     marginTop: 20,
     borderRadius: 7,
     justifyContent: "center",
     alignItems: "center",
+  },
+  signWrapper: {
+    flexGrow: 0.1,
+    justifyContent: "center",
   },
 });
 

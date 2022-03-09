@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import beneficiaryStore from "../../stores/beneficiaryStore";
-import { Button } from "native-base";
+import { Button, Spinner } from "native-base";
 
-const BeneficiariesItem = ({ beneficiary, route, navigation }) => {
+const BeneficiariesItem = ({ beneficiary, navigation }) => {
+  if (beneficiaryStore.loading) return <Spinner />;
+
   return (
     <View>
       <Text>

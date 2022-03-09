@@ -12,7 +12,11 @@ import COLORS from "../const/color";
 
 const Home = ({ navigation }) => {
   return (
-    <View style={{ flex: 1 }}>
+    <View
+      style={{
+        flex: 1,
+      }}
+    >
       <StatusBar translucent backgroundColor="rgba(0,0,0,0)" />
       <ImageBackground
         style={{ flex: 1 }}
@@ -21,38 +25,46 @@ const Home = ({ navigation }) => {
         <View style={style.details}>
           <Text
             style={{
-              color: COLORS.black,
+              color: "white",
               fontSize: 25,
+              lineHeight: "100vh",
               fontWeight: "bold",
-              backgroundColor: COLORS.grey,
+              textAlign: "center",
+              backgroundColor: "rgba(0, 0, 0, 0.7)",
             }}
           >
             Welcome To Swifty Bank !
           </Text>
-          <Text
+          {/* <Text
             style={{
-              color: COLORS.white,
-              fontSize: 35,
+              color: "white",
+              fontSize: 25,
+              lineHeight: 40,
               fontWeight: "bold",
-              backgroundColor: COLORS.grey,
+              textAlign: "center",
+              backgroundColor: "rgba(0, 0, 0, 0.7)",
             }}
-          ></Text>
-          <Text
+          ></Text> */}
+          {/* <Text
             style={{
-              color: COLORS.black,
-              lineHeight: 25,
-              marginTop: 15,
-              backgroundColor: COLORS.grey,
+              color: "white",
+              fontSize: 15,
+              lineHeight: 40,
+              fontWeight: "bold",
+              textAlign: "center",
+              backgroundColor: "rgba(0, 0, 0, 0.7)",
             }}
           >
-            To Access your account click on the button Below!{" "}
-          </Text>
+            To Access your account click the below button!{" "}
+          </Text> */}
           <TouchableOpacity
             activeOpacity={0.8}
             onPress={() => navigation.navigate("Signin")}
           >
             <View style={style.btn}>
-              <Text style={{ fontWeight: "bold" }}>Click Here</Text>
+              <Text style={{ fontWeight: "bold" }}>
+                To Access your account click Here
+              </Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -63,19 +75,22 @@ const Home = ({ navigation }) => {
 
 const style = StyleSheet.create({
   details: {
-    height: "50%",
+    height: "60%",
     bottom: 0,
     position: "absolute",
-    paddingHorizontal: 40,
+    width: "100%",
+
+    // paddingHorizontal: 40,
   },
   btn: {
     height: 50,
-    width: 120,
+    width: 300,
     backgroundColor: COLORS.white,
     marginTop: 20,
     borderRadius: 7,
     justifyContent: "center",
     alignItems: "center",
+    marginLeft: 55,
   },
 });
 export default Home;

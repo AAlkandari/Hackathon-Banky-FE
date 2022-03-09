@@ -12,8 +12,8 @@ class BeneficiaryStore {
       const response = await api.get("/beneficiaries");
       this.beneficiaries = response.data;
       console.log(
-        "🚀 ~ file: beneficiaryStore.js ~ line 14 ~ BeneficiaryStore ~ fetchBeneficiaries= ~ this.beneficiaries",
-        this.beneficiaries.length
+        "🚀 ~ file: beneficiaryStore.js ~ line 14 ~ BeneficiaryStore ~ fetchBeneficiaries= ~ this.beneficiaries"
+        // this.beneficiaries.length
       );
       this.loading = false;
     } catch (error) {

@@ -29,8 +29,8 @@ const Signin = ({ navigation }) => {
   };
 
   return (
-    <Center w="100%">
-      <Box safeArea p="10" py="12" w="90%" maxW="290">
+    <Center w="100%" style={style.signWrapper}>
+      <Box safeArea p="10" py="12" w="90%" maxW="400">
         <Heading
           mt="1"
           _dark={{
@@ -38,7 +38,7 @@ const Signin = ({ navigation }) => {
           }}
           color="coolGray.600"
           fontWeight="medium"
-          size="xs"
+          size="md"
         >
           Please enter your credentials
         </Heading>
@@ -69,18 +69,19 @@ const Signin = ({ navigation }) => {
                 marginLeft: 5,
               }}
             >
-              New user ?
+              New user ?{" "}
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 15,
+                  marginLeft: 5,
+                }}
+                onPress={() => navigation.navigate("Signup")}
+              >
+                Sign Up
+              </Text>
             </Text>
-            <Text
-              style={{
-                fontWeight: "bold",
-                fontSize: 15,
-                marginLeft: 5,
-              }}
-              onPress={() => navigation.navigate("Signup")}
-            >
-              Sign Up
-            </Text>
+
             <Text
               fontSize="sm"
               color="coolGray.600"
@@ -88,17 +89,17 @@ const Signin = ({ navigation }) => {
                 color: "warmGray.200",
               }}
             >
-              Forgot Your Password ?
-            </Text>
-            <Text
-              style={{
-                fontWeight: "bold",
-                fontSize: 15,
-                marginLeft: 5,
-              }}
-              onPress={() => navigation.navigate("ForgetPassword")}
-            >
-              Reset Password
+              Forgot Your Password ?{" "}
+              <Text
+                style={{
+                  fontWeight: "bold",
+                  fontSize: 15,
+                  marginLeft: 5,
+                }}
+                onPress={() => navigation.navigate("ForgetPassword")}
+              >
+                Reset Password
+              </Text>
             </Text>
           </VStack>
         </VStack>
@@ -123,11 +124,16 @@ const style = StyleSheet.create({
   btn: {
     height: 50,
     width: 120,
-    backgroundColor: COLORS.red,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     marginTop: 20,
     borderRadius: 7,
     justifyContent: "center",
     alignItems: "center",
+  },
+
+  signWrapper: {
+    flexGrow: 0.1,
+    justifyContent: "center",
   },
 });
 

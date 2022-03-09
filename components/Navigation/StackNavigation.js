@@ -19,11 +19,7 @@ import Dashboard from "../Screens/Dashboard";
 const StackNavigation = () => {
   const { Navigator, Screen } = createStackNavigator();
   return (
-    <Navigator
-      screenOptions={{ headerShown: false }}
-      initialRouteName="BeneficiariesPage"
-      initialRouteName="Dashboard"
-    >
+    <Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
       <Screen name="Home" component={Home} />
       <Screen name="Signin" component={Signin} />
       <Screen name="Signup" component={Signup} />

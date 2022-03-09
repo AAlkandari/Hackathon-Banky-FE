@@ -20,12 +20,16 @@ import Icon4 from "react-native-vector-icons/MaterialCommunityIcons";
 import COLORS from "../const/color";
 import authStore from "../../stores/authStore";
 import { observer } from "mobx-react";
+import beneficiaryStore from "../../stores/beneficiaryStore";
+import BeneficiariesItem from "./BeneficiariesItem";
+import { Spinner, useBreakpointValue } from "native-base";
 
 // import profileStore from "../../stores/profileStore";
 
 const { width } = Dimensions.get("screen");
 
 const Dashboard = ({ navigation }) => {
+  if (beneficiaryStore.loading) return <Spinner />;
   const handleSubmit = async () => {
     await authStore.signout();
     navigation.replace("Home");
@@ -73,7 +77,10 @@ const Dashboard = ({ navigation }) => {
               fontWeight: "bold",
               marginTop: 10,
             }}
-          ></Text>
+          >
+            {banky.firstname}
+            {banky.lastname}
+          </Text>
           <View
             style={{
               flex: 1,
@@ -83,8 +90,16 @@ const Dashboard = ({ navigation }) => {
             }}
           >
             <View style={{ flexDirection: "row" }}>
-              <Icon name="place" size={20} color={COLORS.white} />
-              <Text style={{ marginLeft: 5, color: COLORS.white }}></Text>
+              <Icon
+                name="credit-card-outline
+"
+                size={22}
+                color={COLORS.white}
+              />
+              <Text style={{ marginLeft: 5, color: COLORS.white }}>
+                {banky.iban}
+                {banky.bankname}
+              </Text>
             </View>
             {/* <View style={{ flexDirection: "row" }}>
               <Icon name="star" size={20} color={COLORS.white} />
@@ -133,8 +148,9 @@ const Dashboard = ({ navigation }) => {
             contentContainerStyle={{ paddingLeft: 20 }}
             horizontal
             showsHorizontalScrollIndicator={false}
-            // data={tripStore.trips}
-            renderItem={({ item }) => <Card place={item} />}
+            data={beneficiaryStore.beneficiaries}
+            renderItem={({ item }) => <Card banky={item} />}
+            backgroundColor={COLORS.primary}
           />
           {/* <Text style={style.sectionTitle}>Recommended</Text>
           <FlatList
