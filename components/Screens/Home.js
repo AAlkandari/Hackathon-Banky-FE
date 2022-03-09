@@ -1,4 +1,3 @@
-import { observer } from "mobx-react";
 import React from "react";
 import {
   View,
@@ -7,23 +6,11 @@ import {
   StatusBar,
   Text,
   TouchableOpacity,
-  Button,
 } from "react-native";
-import { Button } from "native-base";
 import { Colors } from "react-native/Libraries/NewAppScreen";
-import authStore from "../../stores/authStore";
-import { Toast } from "native-base";
 import COLORS from "../const/color";
 
 const Home = ({ navigation }) => {
-  const handleSignout = async () => {
-    await authStore.signout();
-    Toast.show({
-      title: "You have been signed out",
-      status: "success",
-    });
-  };
-
   return (
     <View style={{ flex: 1 }}>
       <StatusBar translucent backgroundColor="rgba(0,0,0,0)" />
@@ -67,31 +54,7 @@ const Home = ({ navigation }) => {
             <View style={style.btn}>
               <Text style={{ fontWeight: "bold" }}>Click Here</Text>
             </View>
-            <Button
-              style={{
-                height: 60,
-              }}
-              onPress={() => navigation.navigate("Create")}
-            >
-              <Text
-                style={{
-                  fontFamily: "Optima",
-                  fontWeight: "bold",
-                  color: "white",
-                  textDecorationLine: "underline",
-                }}
-              >
-                create account
-              </Text>
-            </Button>
           </TouchableOpacity>
-          {authStore.user && (
-            <View style={style.btn}>
-              <Text style={{ fontWeight: "bold" }} onPress={handleSignout}>
-                Sign Out
-              </Text>
-            </View>
-          )}
         </View>
       </ImageBackground>
     </View>
@@ -115,4 +78,4 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
 });
-export default observer(Home);
+export default Home;

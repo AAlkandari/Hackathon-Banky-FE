@@ -9,16 +9,22 @@ import ResetPassword from "../Auth/ResetPassword";
 import AccountDetails from "../../Accounts/AccountDetails";
 import AccountList from "../../Accounts/AccountList";
 import CreateAccountaModal from "../../Accounts/CreateAccount.Modal";
+import Dashboard from "../Screens/Dashboard";
 
 const StackNavigation = () => {
   const { Navigator, Screen } = createStackNavigator();
   return (
-    <Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
+    <Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Dashboard"
+    >
       <Screen name="Home" component={Home} />
       <Screen name="Signin" component={Signin} />
       <Screen name="Signup" component={Signup} />
       <Screen name="ForgetPassword" component={ForgetPassword} />
       <Screen name="ResetPassword" component={ResetPassword} />
+      <Screen name="Dashboard" component={Dashboard} />
+
       <Screen
         name="Accounts"
         component={AccountList}
