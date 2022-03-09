@@ -15,7 +15,8 @@ import AccountDetails from "../../Accounts/AccountDetails";
 import AccountList from "../../Accounts/AccountList";
 import CreateAccountaModal from "../../Accounts/CreateAccount.Modal";
 import Dashboard from "../Screens/Dashboard";
-
+import BeneficiariesDetails from "../Screens/BeneficiariesDetails";
+import CreateBen from "../Screens/CreateBen";
 const StackNavigation = () => {
   const { Navigator, Screen } = createStackNavigator();
   return (
@@ -26,10 +27,12 @@ const StackNavigation = () => {
       <Screen name="ForgetPassword" component={ForgetPassword} />
       <Screen name="ResetPassword" component={ResetPassword} />
 
-      <Screen name="BeneficiariesPage" component={BeneficiariesPage} />
+      {/* <Screen name="BeneficiariesPage" component={BeneficiariesPage} />
       <Screen name="BeneficiaryAdd" component={BeneficiaryAdd} />
-      <Screen name="BeneficiaryUpdate" component={BeneficiaryUpdate} />
+      <Screen name="BeneficiaryUpdate" component={BeneficiaryUpdate} /> */}
       <Screen name="Dashboard" component={Dashboard} />
+      <Screen name="BeneficiariesDetails" component={BeneficiariesDetails} />
+      <Screen name="CreateBen" component={CreateBen} />
 
       <Screen
         name="Accounts"

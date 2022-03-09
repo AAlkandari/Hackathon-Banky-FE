@@ -15,8 +15,9 @@ import {
 import Icon from "react-native-vector-icons/MaterialIcons";
 import Icon1 from "react-native-vector-icons/MaterialIcons";
 import Icon2 from "react-native-vector-icons/MaterialIcons";
-import Icon3 from "react-native-vector-icons/FontAwesome";
+// import Icon3 from "react-native-vector-icons/FontAwesome";
 import Icon4 from "react-native-vector-icons/MaterialCommunityIcons";
+import Icon5 from "react-native-vector-icons/FontAwesome";
 import COLORS from "../const/color";
 import authStore from "../../stores/authStore";
 import { observer } from "mobx-react";
@@ -36,22 +37,16 @@ const Dashboard = ({ navigation }) => {
     console.log("signedOut");
   };
 
-  //   const myOwnProfile = () => {
-  //     if (!profileStore.userProfile)
-  //       profileStore.setUserProfile(authstore.user._id);
-  //     navigation.navigate("UserProfile", { profile: profileStore.userProfile });
-  //   };
-
   const categoryIcons = [
     <Icon1 name="credit-card" size={25} color={COLORS.primary} />,
-    <Icon2 name="euro" size={25} color={COLORS.primary} />,
-    <Icon3 name="user" size={25} color={COLORS.primary} />,
-    <Icon4
-      name="logout"
+    <Icon5
+      name="user-plus"
       size={25}
       color={COLORS.primary}
-      onPress={handleSubmit}
+      onPress={() => navigation.navigate("CreateBen")}
     />,
+    <Icon2 name="euro" size={25} color={COLORS.primary} />,
+    <Icon4 name="logout" size={25} color={COLORS.red} onPress={handleSubmit} />,
   ];
 
   const ListCategories = () => {
@@ -68,7 +63,10 @@ const Dashboard = ({ navigation }) => {
 
   const Card = ({ banky }) => {
     return (
-      <TouchableOpacity activeOpacity={0.8}>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() => navigation.navigate("BeneficiariesDetails", { banky })}
+      >
         <ImageBackground style={style.cardImage}>
           <Text
             style={{
@@ -86,25 +84,17 @@ const Dashboard = ({ navigation }) => {
               flex: 1,
               justifyContent: "space-between",
               flexDirection: "row",
-              alignItems: "flex-end",
             }}
           >
-            <View style={{ flexDirection: "row" }}>
-              <Icon
-                name="credit-card-outline
-"
-                size={22}
-                color={COLORS.white}
-              />
+            <View>
               <Text style={{ marginLeft: 5, color: COLORS.white }}>
-                {banky.iban}
-                {banky.bankname}
+                BANK: {banky.bankname}
               </Text>
+              <Text style={{ marginLeft: 5, color: COLORS.white }}>
+                IBAN: {banky.iban}{" "}
+              </Text>
+              <View style={{ flexDirection: "row" }}></View>
             </View>
-            {/* <View style={{ flexDirection: "row" }}>
-              <Icon name="star" size={20} color={COLORS.white} />
-              <Text style={{ marginLeft: 5, color: COLORS.white }}>5.0</Text>
-            </View> */}
           </View>
         </ImageBackground>
       </TouchableOpacity>
@@ -114,10 +104,7 @@ const Dashboard = ({ navigation }) => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
       <StatusBar translucent={false} backgroundColor={COLORS.primary} />
-      <View style={style.header}>
-        {/* <Icon name="sort" size={28} color={COLORS.white} /> */}
-        {/* <Icon name="notifications-none" size={28} color={COLORS.white} /> */}
-      </View>
+      <View style={style.header}></View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View
           style={{
@@ -131,18 +118,12 @@ const Dashboard = ({ navigation }) => {
             <Text style={style.headerTitle}>
               {authStore.user && authStore.user.username}
             </Text>
-            {/* <View style={style.inputContainer}>
-              <Icon name="search" size={28} />
-              <TextInput
-                placeholder="Search for Trip"
-                style={{ color: COLORS.grey }}
-              />
-            </View> */}
           </View>
         </View>
 
         <ListCategories />
         <Text style={style.sectionTitle}>Beneficiaries</Text>
+        <Icon5 />
         <View>
           <FlatList
             contentContainerStyle={{ paddingLeft: 20 }}
@@ -152,15 +133,6 @@ const Dashboard = ({ navigation }) => {
             renderItem={({ item }) => <Card banky={item} />}
             backgroundColor={COLORS.primary}
           />
-          {/* <Text style={style.sectionTitle}>Recommended</Text>
-          <FlatList
-            snapToInterval={width - 20}
-            contentContainerStyle={{ paddingLeft: 20, paddingBottom: 20 }}
-            showsHorizontalScrollIndicator={false}
-            horizontal
-            data={places}
-            renderItem={({ item }) => <RecommendedCard place={item} />}
-          /> */}
           <Text style={style.sectionTitle}>Last Transactions</Text>
         </View>
       </ScrollView>
@@ -213,6 +185,7 @@ const style = StyleSheet.create({
     marginVertical: 20,
     fontWeight: "bold",
     fontSize: 20,
+    color: "black",
   },
   cardImage: {
     height: 220,
@@ -220,7 +193,8 @@ const style = StyleSheet.create({
     marginRight: 20,
     padding: 10,
     overflow: "hidden",
-    borderRadius: 10,
+    borderRadius: 40,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   rmCardImage: {
     width: width - 40,

@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import api from "./api";
+import { Toast } from "native-base";
 
 class BeneficiaryStore {
   beneficiaries = [];
@@ -28,18 +29,15 @@ class BeneficiaryStore {
       //   );
 
       const res = await api.post(`/beneficiaries`, newBeneficiary);
-
       this.beneficiaries.push(res.data);
-
       this.loading = false;
-      navigation.navigate("BeneficiaryList");
-      toast.show({
-        title: "beneficiary is created Successfully",
+      Toast.show({
+        title: "beneficiary is added Successfully",
         status: "success",
       });
     } catch (error) {
       console.log(error);
-      toast.show({
+      Toast.show({
         title: "Cannot Create",
         status: "error",
       });
@@ -57,14 +55,13 @@ class BeneficiaryStore {
       this.beneficiaries = tempBeneficiary;
       this.loading = false;
 
-      navigation.replace("BeneficiaryList");
-      toast.show({
-        title: "beneficiary is Deleted Successfully",
+      Toast.show({
+        title: "Beneficiary is Deleted Successfully",
         status: "success",
       });
     } catch (error) {
       console.log(error);
-      toast.show({
+      Toast.show({
         title: "I'm Sorry You are not the Owner",
         status: "error",
       });

@@ -27,7 +27,7 @@ const Home = ({ navigation }) => {
             style={{
               color: "white",
               fontSize: 25,
-              lineHeight: "100vh",
+              lineHeight: 50,
               fontWeight: "bold",
               textAlign: "center",
               backgroundColor: "rgba(0, 0, 0, 0.7)",
