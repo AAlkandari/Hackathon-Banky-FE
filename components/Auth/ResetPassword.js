@@ -15,15 +15,16 @@ import COLORS from "../const/color";
 import { StyleSheet } from "react-native";
 import authStore from "../../stores/authStore";
 import { observer } from "mobx-react";
-import { useToast } from "native-base";
 
-const ForgetPassword = ({ navigation }) => {
-  const [email, setEmail] = useState({
-    email: "",
+const ResetPassword = ({ navigation }) => {
+  const [password, setPassword] = useState({
+    newPass: "",
+    resetLink: "",
   });
+
   const handleSubmit = async () => {
-    await authStore.forgotPassword(email);
-    if (authStore.forgotPassword) navigation.replace("ResetPassword");
+    await authStore.resetPassword(password);
+    if (authStore.resetPassword) navigation.replace("Signin");
   };
 
   return (
@@ -38,23 +39,36 @@ const ForgetPassword = ({ navigation }) => {
           fontWeight="medium"
           size="xs"
         >
-          Reset Your Password{" "}
+          Reset Your Password
         </Heading>
 
         <VStack space={3} mt="5">
           <FormControl>
-            <FormControl.Label>Email</FormControl.Label>
+            <FormControl.Label>New Password</FormControl.Label>
             <Input
-              onChangeText={(value) => setEmail({ ...email, email: value })}
-              placeholder="example@swifty.com"
+              onChangeText={(value) =>
+                setPassword({ ...password, newPass: value })
+              }
+              type="password"
+              placeholder="Enter Your New Password"
+            />
+          </FormControl>
+          <FormControl>
+            <FormControl.Label>Token Provided</FormControl.Label>
+            <Input
+              type="text"
+              onChangeText={(value) =>
+                setPassword({ ...password, resetLink: value })
+              }
+              placeholder="Enter your token here"
             />
           </FormControl>
           <Button style={style.btn} mt="2" onPress={handleSubmit}>
-            Send Link
+            Submit
           </Button>
-          <Button style={style.btn} mt="2" onPress={() => navigation.goBack()}>
-            Back
-          </Button>
+          {/* <Button style={style.btn} mt="2" onPress={() => navigation.goBack()}>
+              Back
+            </Button> */}
         </VStack>
       </Box>
     </Center>
@@ -85,4 +99,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default observer(ForgetPassword);
+export default observer(ResetPassword);

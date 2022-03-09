@@ -87,15 +87,45 @@ class AuthStore {
     }
   };
 
-  forgotPassword = async (email, navigation) => {
+  forgotPassword = async (email) => {
     try {
       const resp = await api.put("/forgot-password", email);
       console.log(resp.data);
-      //   this.setUser(resp.data.token);
-      navigation.replace("Signin");
+      Toast.show({
+        title: "Link has been sent",
+        status: "success",
+        description: "Please Check You Email ",
+      });
     } catch (error) {
+      Toast.show({
+        title: "Something went wrong",
+        status: "error",
+        description: "Please fill in required data",
+      });
       console.log(
         "🚀 ~ file: authStore.js ~ line 69 ~ AuthStore ~ forgotPassword= ~ error",
+        error
+      );
+    }
+  };
+
+  resetPassword = async (newPass, resetLink) => {
+    try {
+      const resp = await api.put("/reset-password", newPass, resetLink);
+      console.log(resp.data);
+      Toast.show({
+        title: "Your Password has been changed",
+        status: "success",
+        description: "Please login with your new password ",
+      });
+    } catch (error) {
+      Toast.show({
+        title: "Something went wrong",
+        status: "error",
+        description: "",
+      });
+      console.log(
+        "🚀 ~ file: authStore.js ~ line 110 ~ AuthStore ~ resetPassword= ~ error",
         error
       );
     }
