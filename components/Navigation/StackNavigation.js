@@ -14,6 +14,7 @@ import BeneficiaryUpdate from "../Screens/BeneficiaryUpdate";
 import AccountDetails from "../../Accounts/AccountDetails";
 import AccountList from "../../Accounts/AccountList";
 import CreateAccountaModal from "../../Accounts/CreateAccount.Modal";
+import Dashboard from "../Screens/Dashboard";
 
 const StackNavigation = () => {
   const { Navigator, Screen } = createStackNavigator();
@@ -21,6 +22,7 @@ const StackNavigation = () => {
     <Navigator
       screenOptions={{ headerShown: false }}
       initialRouteName="BeneficiariesPage"
+      initialRouteName="Dashboard"
     >
       <Screen name="Home" component={Home} />
       <Screen name="Signin" component={Signin} />
@@ -31,6 +33,7 @@ const StackNavigation = () => {
       <Screen name="BeneficiariesPage" component={BeneficiariesPage} />
       <Screen name="BeneficiaryAdd" component={BeneficiaryAdd} />
       <Screen name="BeneficiaryUpdate" component={BeneficiaryUpdate} />
+      <Screen name="Dashboard" component={Dashboard} />
 
       <Screen
         name="Accounts"
