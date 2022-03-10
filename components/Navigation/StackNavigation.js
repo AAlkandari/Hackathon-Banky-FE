@@ -9,7 +9,6 @@ import ForgetPassword from "../Auth/ForgetPassword";
 import Createtransaction from "../Transaction/Createtransaction";
 import ResetPassword from "../Auth/ResetPassword";
 
-
 import BeneficiariesPage from "../Screens/BeneficiariesPage";
 import BeneficiaryAdd from "../Screens/BeneficiaryAdd";
 import BeneficiaryUpdate from "../Screens/BeneficiaryUpdate";
@@ -23,10 +22,7 @@ import CreateBen from "../Screens/CreateBen";
 const StackNavigation = () => {
   const { Navigator, Screen } = createStackNavigator();
   return (
-    <Navigator
-      screenOptions={{ headerShown: false }}
-      initialRouteName="Dashboard"
-    >
+    <Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
       <Screen name="Home" component={Home} />
       <Screen name="Signin" component={Signin} />
       <Screen name="Signup" component={Signup} />

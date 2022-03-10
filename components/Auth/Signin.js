@@ -9,11 +9,12 @@ import {
   VStack,
   Text,
   useToast,
+  View,
 } from "native-base";
 import React from "react";
 import { useState } from "react";
 import COLORS from "../const/color";
-import { StyleSheet } from "react-native";
+import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import authStore from "../../stores/authStore";
 import { observer } from "mobx-react";
 
@@ -29,82 +30,90 @@ const Signin = ({ navigation }) => {
   };
 
   return (
-    <Center w="100%" style={style.signWrapper}>
-      <Box safeArea p="10" py="12" w="90%" maxW="400">
-        <Heading
-          mt="1"
-          _dark={{
-            color: "warmGray.200",
-          }}
-          color="coolGray.600"
-          fontWeight="medium"
-          size="md"
-        >
-          Please enter your credentials
-        </Heading>
-
-        <VStack space={3} mt="5">
-          <FormControl>
-            <FormControl.Label>Username</FormControl.Label>
-            <Input
-              onChangeText={(value) => setUser({ ...user, username: value })}
-            />
-          </FormControl>
-          <FormControl>
-            <FormControl.Label>Password</FormControl.Label>
-            <Input
-              type="password"
-              onChangeText={(value) => setUser({ ...user, password: value })}
-            />
-          </FormControl>
-          <Button style={style.btn} mt="2" onPress={handleSubmit}>
-            Sign in
-          </Button>
-          <VStack mt="6" justifyContent="center">
-            <Text
-              fontSize="sm"
-              color="coolGray.600"
-              _dark={{
-                color: "warmGray.200",
-                marginLeft: 5,
-              }}
-            >
-              New user ?{" "}
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  fontSize: 15,
-                  marginLeft: 5,
-                }}
-                onPress={() => navigation.navigate("Signup")}
-              >
-                Sign Up
-              </Text>
-            </Text>
-
-            <Text
-              fontSize="sm"
-              color="coolGray.600"
+    <ScrollView style={style.scrollView}>
+      <View>
+        <Center w="100%" style={style.signWrapper}>
+          <Box safeArea p="10" py="12" w="90%" maxW="400">
+            <Heading
+              mt="1"
               _dark={{
                 color: "warmGray.200",
               }}
+              color="coolGray.600"
+              fontWeight="medium"
+              size="md"
             >
-              Forgot Your Password ?{" "}
-              <Text
-                style={{
-                  fontWeight: "bold",
-                  fontSize: 15,
-                  marginLeft: 5,
-                }}
-                onPress={() => navigation.navigate("ForgetPassword")}
-              >
-                Reset Password
-              </Text>
-            </Text>
-          </VStack>
-        </VStack>
-      </Box>
-    </Center>
+              Please enter your credentials
+            </Heading>
+
+            <VStack space={3} mt="5">
+              <FormControl>
+                <FormControl.Label>Username</FormControl.Label>
+                <Input
+                  onChangeText={(value) =>
+                    setUser({ ...user, username: value })
+                  }
+                />
+              </FormControl>
+              <FormControl>
+                <FormControl.Label>Password</FormControl.Label>
+                <Input
+                  type="password"
+                  onChangeText={(value) =>
+                    setUser({ ...user, password: value })
+                  }
+                />
+              </FormControl>
+              <Button style={style.btn} mt="2" onPress={handleSubmit}>
+                Sign in
+              </Button>
+              <VStack mt="6" justifyContent="center">
+                <Text
+                  fontSize="sm"
+                  color="coolGray.600"
+                  _dark={{
+                    color: "warmGray.200",
+                    marginLeft: 5,
+                  }}
+                >
+                  New user ?{" "}
+                  <Text
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: 15,
+                      marginLeft: 5,
+                    }}
+                    onPress={() => navigation.navigate("Signup")}
+                  >
+                    Sign Up
+                  </Text>
+                </Text>
+
+                <Text
+                  fontSize="sm"
+                  color="coolGray.600"
+                  _dark={{
+                    color: "warmGray.200",
+                  }}
+                >
+                  Forgot Your Password ?{" "}
+                  <Text
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: 15,
+                      marginLeft: 5,
+                    }}
+                    onPress={() => navigation.navigate("ForgetPassword")}
+                  >
+                    Reset Password
+                  </Text>
+                </Text>
+              </VStack>
+            </VStack>
+          </Box>
+        </Center>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -134,6 +143,10 @@ const style = StyleSheet.create({
   signWrapper: {
     flexGrow: 0.1,
     justifyContent: "center",
+  },
+
+  scrollView: {
+    marginHorizontal: 20,
   },
 });
 

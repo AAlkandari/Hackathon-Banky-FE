@@ -10,7 +10,7 @@ class TransactionStore {
 
   fetchTransactions = async () => {
     try {
-      const response = await api.get("/transaction");
+      const res = await api.get("/transaction");
       this.transactions = res.data;
       this.loading = false;
     } catch (error) {
@@ -21,7 +21,7 @@ class TransactionStore {
   createTransaction = async (newTransaction, navigation) => {
     try {
       const response = await api.post("/transaction", newTransaction);
-      this.transactions.push(res.data);
+      this.transactions.push(response.data);
       navigation.goBack();
       //   navigation.navigate("Dashboard")
     } catch (error) {

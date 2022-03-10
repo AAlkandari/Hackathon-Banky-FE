@@ -10,9 +10,8 @@ class AccountStore {
 
   fetchAccount = async () => {
     try {
-      const res = await api.get("/accounts");
+      const res = await api.get("/account");
       this.accounts = res.data;
-      console.log(res.data);
     } catch (error) {
       console.log(error);
     }

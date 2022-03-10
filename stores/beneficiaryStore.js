@@ -13,8 +13,8 @@ class BeneficiaryStore {
       const response = await api.get("/beneficiaries");
       this.beneficiaries = response.data;
       console.log(
-        "🚀 ~ file: beneficiaryStore.js ~ line 14 ~ BeneficiaryStore ~ fetchBeneficiaries= ~ this.beneficiaries"
-        // this.beneficiaries.length
+        "🚀 ~ file: beneficiaryStore.js ~ line 14 ~ BeneficiaryStore ~ fetchBeneficiaries= ~ this.beneficiaries",
+        this.beneficiaries
       );
       this.loading = false;
     } catch (error) {
@@ -47,7 +47,6 @@ class BeneficiaryStore {
   deleteBeneficiary = async (id, navigation, toast) => {
     try {
       const response = await api.delete(`/beneficiaries/${id}`);
-      console.log(response.data);
       //destractire
       const tempBeneficiary = this.beneficiaries.filter(
         (beneficiary) => beneficiary._id !== id
@@ -68,10 +67,6 @@ class BeneficiaryStore {
     }
   };
   updateBeneficiary = async (updatedBeneficiary, navigation, toast) => {
-    console.log(
-      "🚀 ~ file: beneficiaryStore.js ~ line 74 ~ BeneficiaryStore ~ updateBeneficiary= ~ updatedBeneficiary",
-      updatedBeneficiary
-    );
     try {
       const response = await api.put(
         `/beneficiaries/${updatedBeneficiary._id}`,

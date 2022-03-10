@@ -5,7 +5,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 // import profileStore from "./profileStore";
 import { Toast } from "native-base";
 
-
 class AuthStore {
   user = null;
   constructor() {
@@ -19,29 +18,20 @@ class AuthStore {
   };
 
   signIn = async (user) => {
-    console.log(user);
     try {
       const resp = await api.post("/signin", user);
       this.setUser(resp.data.token);
       if (user)
-        console.log(
-          "🚀 ~ file: authStore.js ~ line 26 ~ AuthStore ~ signIn= ~ user",
-          user
-        );
-      Toast.show({
-        title: "Welcome Back",
-        status: "success",
-      });
+        Toast.show({
+          title: "Welcome Back",
+          status: "success",
+        });
     } catch (error) {
       Toast.show({
         title: "Something went wrong",
         status: "error",
         description: "Please Enter Valid Credentials",
       });
-      console.log(
-        "🚀 ~ file: authStore.js ~ line 25 ~ AuthStore ~ signIn= ~ error",
-        error
-      );
     }
   };
 
@@ -49,12 +39,20 @@ class AuthStore {
     try {
       const resp = await api.post("/signup", user);
       this.setUser(resp.data.token);
-      //   await profileStore.assignProfileToUser();
-      Toast.show({
-        title: "Account verified",
-        status: "success",
-        description: "Thanks for signing up with us.",
-      });
+      await profileStore.assignProfileToUser();
+      if (user) {
+        Toast.show({
+          title: "Account verified",
+          status: "success",
+          description: "Thanks for signing up with us.",
+        });
+      } else {
+        Toast.show({
+          title: "Account not created",
+          status: "warning",
+          description: "Thanks for signing up with us.",
+        });
+      }
     } catch (error) {
       Toast.show({
         title: "Something went wrong",
@@ -91,7 +89,6 @@ class AuthStore {
   forgotPassword = async (email) => {
     try {
       const resp = await api.put("/forgot-password", email);
-      console.log(resp.data);
       Toast.show({
         title: "Link has been sent",
         status: "success",
@@ -113,7 +110,6 @@ class AuthStore {
   resetPassword = async (newPass, resetLink) => {
     try {
       const resp = await api.put("/reset-password", newPass, resetLink);
-      console.log(resp.data);
       Toast.show({
         title: "Your Password has been changed",
         status: "success",

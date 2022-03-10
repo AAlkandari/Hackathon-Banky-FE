@@ -45,7 +45,12 @@ const Dashboard = ({ navigation }) => {
       color={COLORS.primary}
       onPress={() => navigation.navigate("CreateBen")}
     />,
-    <Icon2 name="euro" size={25} color={COLORS.primary} />,
+    <Icon2
+      name="euro"
+      size={25}
+      color={COLORS.primary}
+      onPress={() => navigation.navigate("Createtransaction")}
+    />,
     <Icon4 name="logout" size={25} color={COLORS.red} onPress={handleSubmit} />,
   ];
 

@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import api from "./api";
-
+import authStore from "./authStore";
 class ProfileStore {
   constructor() {
     makeAutoObservable(this);
@@ -12,18 +12,20 @@ class ProfileStore {
 
   listProfiles = async () => {
     try {
-      const res = await api.get("/profiles");
+      const res = await api.get("/profile");
       this.profiles = res.data;
+
       this.loading = false;
     } catch (error) {
       console.log(error);
     }
   };
 
-  setUserProfile = (userId) => {
+  setUserProfile = () => {
     const findProfile = this.profiles.find(
-      (profile) => userId === profile.user._id
+      (profile) => profile.owner === authStore.user.id
     );
+
     this.userProfile = findProfile;
   };
 
