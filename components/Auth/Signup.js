@@ -30,10 +30,15 @@ const Signup = ({ navigation }) => {
   const handleSubmit = async () => {
     await authStore.signUp(user);
     if (authStore.user) navigation.replace("Home");
+    toast.show({
+      title: "Account verified",
+      status: "success",
+      description: "Thanks for signing up with us.",
+    });
   };
   return (
-    <Center w="100%">
-      <Box safeArea p="2" py="8" w="90%" maxW="290">
+    <Center w="100%" style={style.signWrapper}>
+      <Box safeArea p="10" py="12" w="90%" maxW="400">
         <Heading
           mt="1"
           _dark={{
@@ -41,7 +46,7 @@ const Signup = ({ navigation }) => {
           }}
           color="coolGray.600"
           fontWeight="medium"
-          size="xs"
+          size="md"
         >
           Sign up to continue!
         </Heading>
@@ -131,11 +136,15 @@ const style = StyleSheet.create({
   btn: {
     height: 50,
     width: 120,
-    backgroundColor: COLORS.red,
+    backgroundColor: COLORS.primary,
     marginTop: 20,
     borderRadius: 7,
     justifyContent: "center",
     alignItems: "center",
+  },
+  signWrapper: {
+    flexGrow: 0.1,
+    justifyContent: "center",
   },
 });
 export default Signup;
