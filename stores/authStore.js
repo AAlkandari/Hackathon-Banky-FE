@@ -5,6 +5,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 // import profileStore from "./profileStore";
 import { Toast } from "native-base";
 
+
 class AuthStore {
   user = null;
   constructor() {

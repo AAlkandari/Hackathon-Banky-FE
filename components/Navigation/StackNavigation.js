@@ -5,7 +5,10 @@ import Home from "../Screens/Home";
 import Signin from "../Auth/Signin";
 import Signup from "../Auth/Signup";
 import ForgetPassword from "../Auth/ForgetPassword";
+// import Dashboard from "../Screens/Dashboard";
+import Createtransaction from "../Transaction/Createtransaction";
 import ResetPassword from "../Auth/ResetPassword";
+
 
 import BeneficiariesPage from "../Screens/BeneficiariesPage";
 import BeneficiaryAdd from "../Screens/BeneficiaryAdd";
@@ -20,20 +23,23 @@ import CreateBen from "../Screens/CreateBen";
 const StackNavigation = () => {
   const { Navigator, Screen } = createStackNavigator();
   return (
-    <Navigator screenOptions={{ headerShown: false }} initialRouteName="Home">
+    <Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Dashboard"
+    >
       <Screen name="Home" component={Home} />
       <Screen name="Signin" component={Signin} />
       <Screen name="Signup" component={Signup} />
       <Screen name="ForgetPassword" component={ForgetPassword} />
+      {/* <Screen name="Dashboard" component={Dashboard} /> */}
+      <Screen name="Createtransaction" component={Createtransaction} />
       <Screen name="ResetPassword" component={ResetPassword} />
-
       {/* <Screen name="BeneficiariesPage" component={BeneficiariesPage} />
       <Screen name="BeneficiaryAdd" component={BeneficiaryAdd} />
       <Screen name="BeneficiaryUpdate" component={BeneficiaryUpdate} /> */}
       <Screen name="Dashboard" component={Dashboard} />
       <Screen name="BeneficiariesDetails" component={BeneficiariesDetails} />
       <Screen name="CreateBen" component={CreateBen} />
-
       <Screen
         name="Accounts"
         component={AccountList}
